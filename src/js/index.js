@@ -1,3 +1,4 @@
-import css from "../css/style.css";
+import "../scss/index.scss";
+import html from "../index.html";
 
 console.log("hello world!");
