@@ -1,4 +1,8 @@
 import "../scss/index.scss";
-import html from "../index.html";
+import "../index.html";
 
 console.log("hello world!");
+
+if (module.hot) {
+    module.hot.accept();
+}

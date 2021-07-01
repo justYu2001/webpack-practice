@@ -2,7 +2,8 @@ const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    plugins: [new MiniCssExtractPlugin({
+    plugins: [
+        new MiniCssExtractPlugin({
         filename:'css/[name].css',
     }),],
     mode: process.env.NODE_ENV,
@@ -19,7 +20,8 @@ module.exports = {
         rules: [
           {
             test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, 
+            use: [
+                MiniCssExtractPlugin.loader, 
                 "css-loader",
                 {
                     loader: "postcss-loader",
@@ -37,7 +39,8 @@ module.exports = {
           },
           {
             test: /\.s[ac]ss$/i,
-            use: [MiniCssExtractPlugin.loader, 
+            use: [
+                MiniCssExtractPlugin.loader,
                 "css-loader",
                 {
                     loader: "postcss-loader",
@@ -65,4 +68,11 @@ module.exports = {
           }
         ],
       },
+    devServer:{
+        contentBase: path.resolve(__dirname, "./dist"),
+        compress: true,
+        port: 9000,
+        open: 'Google Chrome',
+        hot: true,
+    },
 }

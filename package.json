@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack --watch",
     "build": "cross-env NODE_ENV=development webpack",
-    "deploy": "cross-env NODE_ENV=production webpack"
+    "deploy": "cross-env NODE_ENV=production webpack",
+    "serve": "cross-env NODE_ENV=development webpack serve"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +24,8 @@
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",
     "webpack": "^5.41.1",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "browserslist": {
     "production": [
