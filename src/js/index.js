@@ -1,12 +1,12 @@
-import "../scss/index.scss";
-import "../index.html";
+import "index.scss";
+import "index.html";
 
 import "core-js";
 
 import axios from "axios";
 
-import obj from "./obj";
-import add from "./add";
+import obj from "obj";
+import add from "add";
 
 console.log("hello world!");
 

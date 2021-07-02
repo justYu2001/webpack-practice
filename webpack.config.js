@@ -9,12 +9,21 @@ module.exports = {
     mode: process.env.NODE_ENV,
     context: path.resolve(__dirname, "./src"),
     entry: {
-        index: "./js/index.js",
-        about: "./js/about.js"
+        index: "index",
+        about: "about"
     },
     output: {
         path: path.resolve(__dirname, "./dist"),
         filename: "js/[name].js",
+    },
+    resolve: {
+        modules: [
+            path.resolve(__dirname, "src"),
+            path.resolve(__dirname, "src/scss"),
+            path.resolve(__dirname, "src/js"),
+            path.resolve(__dirname, "node_modules")
+        ],
+        extensions: [".js"],
     },
     module: {
         rules: [
