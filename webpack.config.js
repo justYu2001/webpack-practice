@@ -2,6 +2,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     plugins: [
@@ -13,10 +14,11 @@ module.exports = {
               { from: "assets", to: "assets" },
             ],
         }),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            axios: "axios"
+        new HtmlWebpackPlugin({
+            title: "webpack practice",
+            filename: "index.html",
+            template: "index.html",
+            chunks: ["index"]
         }),
     ],
     mode: process.env.NODE_ENV,
@@ -80,15 +82,6 @@ module.exports = {
             ],
           },
           {
-              test: /\.html$/i,
-              use: [{
-                  loader: "file-loader",
-                  options: {
-                      name: "[path][name].[ext]",
-                  }
-              }]
-          },
-          {
             test: /\.m?js$/,
             exclude: /(node_modules|bower_components)/,
             use: {
@@ -105,18 +98,6 @@ module.exports = {
               }
             }
           },
-          {
-            test: /\.(gif|png|jpe?g|svg)$/i,
-            use: [
-              'file-loader',
-              {
-                loader: 'image-webpack-loader',
-                options: {
-                  disable: true,
-                },
-              },
-            ],
-          }
         ],
       },
     devServer:{

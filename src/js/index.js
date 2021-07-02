@@ -1,7 +1,8 @@
 import "index.scss";
-import "index.html";
 
 import "core-js";
+
+import axios from "axios";
 
 import obj from "obj";
 import add from "add";
@@ -39,8 +40,6 @@ async function getData(){
     console.log(res.data[0]);
 }
 getData();
-
-console.log($("h1"));
 
 if (module.hot) {
     module.hot.accept();
