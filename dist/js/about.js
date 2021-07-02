@@ -1,1 +1,1 @@
-console.log("justYu2001");
+!function(){"use strict";console.log("justYu2001")}();

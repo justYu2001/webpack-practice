@@ -20,6 +20,12 @@ module.exports = {
             template: "index.html",
             chunks: ["index"]
         }),
+        new HtmlWebpackPlugin({
+            title: "pug loader practice",
+            filename: "about.html",
+            template: "./view/about.pug",
+            chunks: ["about"]
+        }),
     ],
     mode: process.env.NODE_ENV,
     context: path.resolve(__dirname, "./src"),
@@ -36,7 +42,8 @@ module.exports = {
             path.resolve(__dirname, "src"),
             path.resolve(__dirname, "src/scss"),
             path.resolve(__dirname, "src/js"),
-            path.resolve(__dirname, "node_modules")
+            path.resolve(__dirname, "node_modules"),
+            path.resolve(__dirname, "src/view"),
         ],
         extensions: [".js"],
     },
@@ -98,6 +105,10 @@ module.exports = {
               }
             }
           },
+          {
+              test: /\.pug$/i,
+              use: "pug-loader",
+          }
         ],
       },
     devServer:{
