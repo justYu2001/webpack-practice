@@ -1,6 +1,10 @@
 import "../scss/index.scss";
 import "../index.html";
 
+import "core-js";
+
+import axios from "axios";
+
 import obj from "./obj";
 import add from "./add";
 
@@ -30,6 +34,13 @@ class Main{
 }
 
 new Main();
+
+async function getData(){
+    const url = "https://hexschool.github.io/ajaxHomework/data.json";
+    let res = await axios.get(url);
+    console.log(res.data[0]);
+}
+getData();
 
 if (module.hot) {
     module.hot.accept();
