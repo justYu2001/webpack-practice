@@ -5,6 +5,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    devtool: 'source-map',
     plugins: [
         new MiniCssExtractPlugin({
             filename:'css/[name].css',
@@ -18,7 +19,7 @@ module.exports = {
             title: "webpack practice",
             filename: "index.html",
             template: "index.html",
-            chunks: ["index"]
+            chunks: ["vendor", "index"]
         }),
         new HtmlWebpackPlugin({
             title: "pug loader practice",
@@ -87,6 +88,8 @@ module.exports = {
                 },
                 "sass-loader",
             ],
+            include: path.resolve(__dirname, "src/scss"),
+            exclude: path.resolve(__dirname, "node_modules"),
           },
           {
             test: /\.m?js$/,
@@ -103,11 +106,13 @@ module.exports = {
                 ],
                 plugins: ["@babel/plugin-proposal-class-properties", "@babel/plugin-transform-runtime"]
               }
-            }
+            },
           },
           {
               test: /\.pug$/i,
               use: "pug-loader",
+              include: path.resolve(__dirname, "src/view"),
+            exclude: path.resolve("node_modules"),
           }
         ],
       },
@@ -118,4 +123,20 @@ module.exports = {
         open: 'Google Chrome',
         hot: true,
     },
+    optimization: {
+        moduleIds: 'deterministic',
+        minimize: true,
+        splitChunks: {
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              chunks: "all",
+              name: 'vendor',
+            },
+          },
+        },
+        runtimeChunk: {
+            name: entrypoint => `runtimechunk~${entrypoint.name}`
+         },
+      },
 }

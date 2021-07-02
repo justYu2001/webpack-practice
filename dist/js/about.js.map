@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./js/about.js"],"names":["console","log"],"mappings":"oFAEAA,QAAQC,IAAI,gB","file":"js/about.js","sourcesContent":["import \"index.scss\";\n\nconsole.log(\"justYu2001\");"],"sourceRoot":""}

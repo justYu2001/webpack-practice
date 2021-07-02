@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./scss/index.scss"],"names":[],"mappings":"AAAA,GACI,cACA,eACA,UACA,S","file":"css/index.css","sourcesContent":["h1 {\n    color: cadetblue;\n    font-size: 50px;\n    padding: 0;\n    margin: 0;\n}\n"],"sourceRoot":""}
