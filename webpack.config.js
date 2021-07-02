@@ -1,11 +1,18 @@
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
-        filename:'css/[name].css',
-    }),],
+            filename:'css/[name].css',
+        }),
+        new CopyPlugin({
+            patterns: [
+              { from: "assets", to: "assets" },
+            ],
+        }),
+    ],
     mode: process.env.NODE_ENV,
     context: path.resolve(__dirname, "./src"),
     entry: {
@@ -91,6 +98,18 @@ module.exports = {
                 plugins: ["@babel/plugin-proposal-class-properties", "@babel/plugin-transform-runtime"]
               }
             }
+          },
+          {
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              'file-loader',
+              {
+                loader: 'image-webpack-loader',
+                options: {
+                  disable: true,
+                },
+              },
+            ],
           }
         ],
       },
