@@ -1,6 +1,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
     plugins: [
@@ -11,6 +12,11 @@ module.exports = {
             patterns: [
               { from: "assets", to: "assets" },
             ],
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            axios: "axios"
         }),
     ],
     mode: process.env.NODE_ENV,
